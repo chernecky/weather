@@ -6,8 +6,45 @@
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+<div>
+<header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 me-md-auto fw-normal">Chernecky</h5>
+  <nav class="my-2 my-md-0 me-md-3">
+    <a class="p-2 text-dark" href="#">Главная</a>
+    <a class="p-2 text-dark" href="#">Информация</a>
+  </nav>
+    <a class="btn btn-outline-primary" href="#">Документация</a>
+</div>
 
-<p>Лучшее погодное приложение</p>
+<div class="container">
+    <div class="row">
+      <div class="col-5 offset-1">
+           <h1>Погода в вашем городе</h1>
+          <form action="">
+              <label for="city">Город</label>
+              <input type="text" id="city" class="form-control" name="city"
+              placeholder="Введите город">
+                 <input type="submit" name="send" value="Узнать" class="mt-10 btn btn-danger">
+          </form>
+          </div>
+    <div class="col-5 offset-1">
+          <h1>Информация</h1>
 
+        {% for info in all_info %}
+          <div class="alert alert-light">
+              <div class="row">
+                  <div class="col-9">
+              <b>Город:</b> {{info.city}}<br>
+              <b>Температура:</b> {{info.temp}}<sup>o</sup><br>
+              <img src="http://openweathermap.org/img/w{{info.icon}}.png"
+                   alt="Фото погоды" class="img-thumbnail">
+                  </div>
+              </div>
+          </div>
+        {% endfor %}
+
+
+    </div>
+</div>
 </body>
 </html>
